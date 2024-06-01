@@ -41,15 +41,17 @@ def calculateDistanceView(request):
         pointA = (location_lat, location_long)
         print('this is point a - ', location_lat)
         # mapFolium = folium.map(width=800, height=500, location=pointA)
-        destination_lati = destination.latitude
+        destination_lat = destination.latitude
         destination_long = destination.longitude
 
-        pointB = (destination_lati, destination_long)
+        pointB = (destination_lat, destination_long)
         distance = round(geodesic(pointA, pointB).km,2)
         instance.destination = form.cleaned_data.get('destination')
         instance.location= location
         instance.distance = distance
         instance.save()
+        folium.Marker(location=pointA).add_to(m)
+        folium.Marker(location=pointB).add_to(m)
     m = m._repr_html_()
     context = {
         'distance': obj,
