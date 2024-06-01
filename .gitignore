@@ -2,3 +2,5 @@ df-geo
 migrations
 .env
 __pycache__
+
+notes.txt
