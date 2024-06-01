@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}
+Geolocation - Calculate distance {% endblock title %} {% block content %}
+{{map|safe}}
+<br />
+<form action="" method="POST" autocomplete="off">
+  {% csrf_token %} {{form|crispy}}
+  <button type="submit" class="btn btn-primary">Confirm</button>
+</form>
+{% endblock content %}
